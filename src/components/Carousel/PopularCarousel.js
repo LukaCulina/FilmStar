@@ -1,11 +1,8 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { img_300, noPicture } from '../../config/config';
 import { useEffect, useState } from "react";
-import InfoModal from '../Info/Info';
+import CarouselItem from './CarouselItem';
 import './Carousel.css'
-
-const handleDragStart = (e) => e.preventDefault();
 
 const PopularCarousel = ({media_type}) => {
     const key = process.env.REACT_APP_API_KEY;
@@ -24,19 +21,11 @@ const PopularCarousel = ({media_type}) => {
     },[])
 
     const items = content?.map((c) =>(
-        <InfoModal id={c.id} media_type={media_type} keyword="home" c={c}>
-            <div className='carouselItem'>
-                <img 
-                    src={c.poster_path ? `${img_300}/${c.poster_path}`:noPicture} 
-                    alt={c.name || c.title} 
-                    onDragStart={handleDragStart}
-                    className='carouselItem_img_home'
-                />
-                <b className='carouselItem_txt'>
-                    {c.name || c.title}
-                </b>
-            </div>
-        </InfoModal>
+         <CarouselItem 
+            key={c.id} 
+            media_type={media_type} 
+            c={c} 
+        />
     ))
     
     const responsive ={
