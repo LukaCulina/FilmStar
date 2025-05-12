@@ -1,0 +1,94 @@
+.my-favourites {
+    color: white;
+    font-weight: bold; 
+    padding: 1rem;
+    margin: 0 auto;
+    width: 84%;
+  }
+  .heading{
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;  
+  }
+  .slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+      
+  .slider {
+    width: 90%;
+    height: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .media_item {
+    width: 30%;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .media_image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .media_details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .media_details:hover {
+    opacity: 1;
+  }
+  
+  .media_title {
+    white-space: normal; 
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .delete_icon {
+    position: absolute;
+    top: -0.5rem;
+    right: 0.8rem;
+    color: #D1D5DB; 
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  @media(max-width:480px){
+    .media_item {
+        width: auto;
+      }
+  }
+
+  @media(min-width:481px) and (max-width:768px){
+    .media_item {
+        width: 45%;
+      }
+  }
+  
+  
