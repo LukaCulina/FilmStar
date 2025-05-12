@@ -162,7 +162,10 @@ export default function InfoModal({children, media_type, id, keyword}) {
                     {content.runtime ? (
                       <p>{content.runtime} min</p>
                       ) : (
-                      <p>{content.number_of_seasons} seasons</p>
+                      <p>
+                        {content.number_of_seasons}{" "}
+                        {content.number_of_seasons === 1 ? "season" : "seasons"}
+                      </p>
                     )}
                     <p>{(content.first_air_date && new Date(content.first_air_date).getFullYear()) || (content.release_date && new Date(content.release_date).getFullYear())}</p>
                   </span>
