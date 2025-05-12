@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/FilmStar/static/css/main.ea32c565.css",
-    "main.js": "/FilmStar/static/js/main.b38157b3.js",
+    "main.js": "/FilmStar/static/js/main.c00a2960.js",
     "index.html": "/FilmStar/index.html",
     "main.ea32c565.css.map": "/FilmStar/static/css/main.ea32c565.css.map",
-    "main.b38157b3.js.map": "/FilmStar/static/js/main.b38157b3.js.map"
+    "main.c00a2960.js.map": "/FilmStar/static/js/main.c00a2960.js.map"
   },
   "entrypoints": [
     "static/css/main.ea32c565.css",
-    "static/js/main.b38157b3.js"
+    "static/js/main.c00a2960.js"
   ]
 }
