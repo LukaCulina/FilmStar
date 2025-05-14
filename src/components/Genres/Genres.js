@@ -47,7 +47,7 @@ const Genres = ({
         console.log(data);
         setGenres(data.genres);
     }
-
+    
     useEffect(() => {
         fetchGenres();
         return ()=>{
@@ -58,7 +58,7 @@ const Genres = ({
     useEffect(() => {
         const sortedSelectedGenres = sortSelectedGenres(selectedGenres);
         setSelectedGenres(sortedSelectedGenres);
-    
+   
         const sortedGenres = sortGenres(genres);
         setGenres(sortedGenres);
     }, [selectedGenres, genres]);
@@ -107,6 +107,7 @@ const Genres = ({
     return(
         <div className="genres_carousel">
             <AliceCarousel
+                key={selectedGenres.map(g => g.id).join('-')}
                 disableDotsControls
                 disableButtonsControls
                 mouseTracking 
