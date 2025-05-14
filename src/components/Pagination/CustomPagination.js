@@ -23,6 +23,9 @@ const CustomPagination = ({setPage, numOfPages = 10}) => {
                     "& .css-wjh20t-MuiPagination-ul button": {
                         color: "white",
                     },
+                    "& .css-1omp2b7": {
+                        color: "white",
+                    },
                 }}
             />
         </div>
