@@ -26,15 +26,22 @@ const Carousel = ({id, media_type}) => {
   },[])
 
   const items = credits?.map((c) =>(
-    <div className='carouselItem'>
+      <a
+        href={`https://www.themoviedb.org/person/${c.id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="carouselItem"
+        key={c.id}
+        title={c.name}
+        style={{ textDecoration: 'none', color: 'inherit' }}
+      >
       <img 
         src={c.profile_path ? `${img_300}/${c.profile_path}`:noPicture} 
         alt={c?.name} 
         onDragStart={handleDragStart}
         className='carouselItem_img'
       />
-      <b className='carouselItem_txt'>{c?.name}</b>
-    </div>
+      <b className='carouselItem_txt'>{c?.name}</b></a>
   ));
   
   const responsive ={

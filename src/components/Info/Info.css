@@ -72,14 +72,14 @@
     margin: 10px;
 }
 .tagline{
-    margin: 0 auto;
+    margin: 10px auto;
     font-weight: 500;
 }
 .genre_list{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 2% 0 1%;
+    margin: 10px 0 0;
 }
 .InfoModal_genre{
     border: 2px solid white;
@@ -96,9 +96,7 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
-.InfoModal_details p{
-    margin:1%;
-}
+
 .rating{
     display: flex;
     align-items: center;

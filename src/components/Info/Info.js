@@ -158,7 +158,7 @@ export default function InfoModal({children, media_type, id, keyword}) {
                   </span>
                   <span className='InfoModal_details'>
                     <p>{media_type === "movie" ? `Movie` : `TV series`}</p>
-                    <p className='rating'><GradeIcon/>{String(content.vote_average).split('.').length > 1 ? (content.vote_average).toFixed(1) : content.vote_average}</p>
+                    <div className='rating'><GradeIcon/><p>{String(content.vote_average).split('.').length > 1 ? (content.vote_average).toFixed(1) : content.vote_average}</p></div>
                     {content.runtime ? (
                       <p>{content.runtime} min</p>
                       ) : (
