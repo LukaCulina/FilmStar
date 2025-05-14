@@ -17,7 +17,7 @@ const CustomPagination = ({setPage, numOfPages = 10}) => {
         >
             <Pagination
                 count={numOfPages} 
-                onChange={(e) => handlePageChange(e.target.textContent)}
+                onChange={(event, value) => handlePageChange(value)}
                 color="primary"
                 sx={{
                     "& .css-wjh20t-MuiPagination-ul button": {
