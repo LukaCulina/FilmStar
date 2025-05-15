@@ -81,6 +81,21 @@ export default function InfoModal({children, media_type, id, keyword}) {
     }
   };
 
+  const renderDurationOrSeasons = (content) => {
+    if (content.runtime && content.runtime > 0) {
+      return <p>{content.runtime} min</p>;
+    }
+    if (content.number_of_seasons) {
+      return (
+        <p>
+          {content.number_of_seasons}{" "}
+          {content.number_of_seasons === 1 ? "season" : "seasons"}
+        </p>
+      );
+    }
+    return <p>N/A</p>;
+  };
+
   return (
     <>
       <div onClick={handleOpen} className={keyword === "home"? "home" : "media"}>{children}</div>
@@ -158,15 +173,13 @@ export default function InfoModal({children, media_type, id, keyword}) {
                   </span>
                   <span className='InfoModal_details'>
                     <p>{media_type === "movie" ? `Movie` : `TV series`}</p>
-                    <div className='rating'><GradeIcon/><p>{String(content.vote_average).split('.').length > 1 ? (content.vote_average).toFixed(1) : content.vote_average}</p></div>
-                    {content.runtime ? (
-                      <p>{content.runtime} min</p>
-                      ) : (
+                    <div className='rating'>
+                      <GradeIcon/>
                       <p>
-                        {content.number_of_seasons}{" "}
-                        {content.number_of_seasons === 1 ? "season" : "seasons"}
+                        {content.vote_average && content.vote_average > 0 ? Number(content.vote_average).toFixed(1) : "Not yet rated"}
                       </p>
-                    )}
+                    </div>
+                    {renderDurationOrSeasons(content)}
                     <p>{(content.first_air_date && new Date(content.first_air_date).getFullYear()) || (content.release_date && new Date(content.release_date).getFullYear())}</p>
                   </span>
                   <span className='InfoModal_description'>

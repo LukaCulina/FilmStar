@@ -6,7 +6,18 @@ import './DisplayItem.css'
 const DisplayItem = ({c, media_type}) => {
     return (
         <InfoModal id={c.id} media_type={media_type} c={c}>
-            <Badge badgeContent={(c.vote_average).toFixed(1)} color={c.vote_average > 6 ? "primary":"secondary"}/>
+            <Badge
+                badgeContent={
+                    c.vote_average && c.vote_average > 0
+                    ? Number(c.vote_average).toFixed(1)
+                    : "N/A"
+                }
+                color={
+                    c.vote_average && c.vote_average > 0
+                    ? (c.vote_average > 6 ? "primary" : "secondary")
+                    : "success"
+                }
+            />
             <img className="poster"
                 src={c.poster_path  ? `${img_300}/${c.poster_path}` : unavailable}
                 alt={c.title} 

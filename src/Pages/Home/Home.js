@@ -9,7 +9,17 @@ export default function Home() {
   const key = process.env.REACT_APP_API_KEY;  
   const [banner, setBanner] = useState([]);
   
-  const fetchContent = async() =>{
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('banner'));
+    const today = new Date().toISOString().slice(0, 10); // npr. "2025-05-15"
+    if (saved && saved.date === today) {
+      setBanner(saved.movie);
+    } else {
+      fetchContent(today);
+    }
+  }, []);
+  
+  const fetchContent = async(today) =>{
     const response = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${key}&include_adult=false&language=en-US&page=1&sort_by=vote_average.desc&vote_count.gte=200`
     )
@@ -17,25 +27,22 @@ export default function Home() {
     //Odabir nasumičnog filma
     const banner_movie = data.results[Math.floor(Math.random() * data.results.length)];
     setBanner(banner_movie);
+    localStorage.setItem('banner', JSON.stringify({ movie: banner_movie, date: today }));
+  }
+
+  const shortenString = (text, WordNum) => {
+    if(text){
+      const words = text.split(' ');
+      const shortened = words.slice(0, WordNum).join(' ');
+      return shortened + (words.length > WordNum ? '...' : '');
     }
-
-    useEffect(() => {
-        fetchContent();
-    }, [])
-
-    const shortenString = (text, WordNum) => {
-      if(text){
-        const words = text.split(' ');
-        const shortened = words.slice(0, WordNum).join(' ');
-        return shortened + (words.length > WordNum ? '...' : '');
-      }
-      return '';
-    };
+    return '';
+  };
 
   return (
     <>   
-    <div className='banner_container'>
-      <img
+      <div className='banner_container'>
+        <img
           className="banner_image"
           src={banner.backdrop_path
             ? `${img_500}/${banner.backdrop_path}` 
@@ -53,16 +60,16 @@ export default function Home() {
         </div>
       </div>
       <div>
-          <PopularCarousel  media_type="movie"/>
+          <PopularCarousel media_type="movie"/>
       </div>
       <div>
-          <PopularCarousel  media_type="tv"/>
+          <PopularCarousel media_type="tv"/>
       </div>
       <div>
-          <TopRatedCarousel  media_type="movie"/>
+          <TopRatedCarousel media_type="movie"/>
       </div>
       <div>
-          <TopRatedCarousel  media_type="tv"/>
+          <TopRatedCarousel media_type="tv"/>
       </div>
     </>
   );

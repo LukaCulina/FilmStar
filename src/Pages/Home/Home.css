@@ -2,7 +2,7 @@
 .banner_container{
     position: relative;
     width: 100%;
-    height: 25vmax;
+    height: 28vmax;
     display: flex;
     white-space: pre-wrap
 }
